@@ -1,8 +1,11 @@
 <template>
-  <div class="todo-card">
-    <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
-    <button @click="$emit('delete')">Delete</button>
+  <div :class="`${color} w-full md:w-1/2 lg:w-1/3 xl:w-[28%] h-[20%] text-center mt-12 rounded-xl text-white m-4`">
+    <h2 class="m-2 p-4 text-3xl font-bold">Title: {{ title }}</h2>
+    <p class="m-4 p-4 text-xl">Description: {{ description }}</p>
+    <div class="flex justify-center items-center">
+      <button @click="$emit('delete')"
+        class="bg-red-400 hover:bg-red-500 justify-center text-white mx-auto text-lg w-[30%] rounded-full m-4 p-4">Delete</button>
+    </div>
   </div>
 </template>
 
@@ -10,20 +13,10 @@
 export default {
   props: {
     title: String,
-    description: String
+    description: String,
+    color: String
   }
 }
 </script>
 
-<style scoped>
-.todo-card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.todo-card button {
-  margin-top: 10px;
-}
-</style>
+<!-- <style scoped></style> -->
