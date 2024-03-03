@@ -2,7 +2,7 @@
   <div class="m-12 ">
     <div class="bg-gradient-to-r from-fuchsia-600 to-purple-600 p-12  w-[60%]  mx-auto text-center rounded-lg">
       <h1 class="text-4xl font-bold text-white m-8 ">Todo App</h1>
-      <form @submit.prevent="addTodo">
+      <form>
         <div>
           <input type="text" v-model="newTodo.title" placeholder="Title" required
             class="p-6 m-4 w-[60%] bg-white rounded-full   shadow-inner focus:outline-none focus:ring-4 focus:ring-purple-400 focus:border-transparent glow">
@@ -14,7 +14,8 @@
 
         <div class="flex justify-center items-center my-12 ">
           <button type="submit"
-            class="bg-green-500 hover:bg-green-600 text-white p-4 mr-4 w-[20%] text-lg font-semibold rounded-full">Add
+            class="bg-green-500 hover:bg-green-600 text-white p-4 mr-4 w-[20%] text-lg font-semibold rounded-full"
+            @click="addTodo">Add
             Todo</button>
           <button type="button" @click="clearAllTodos"
             class="bg-red-500 hover:bg-red-500 text-white p-4 w-[20%] font-semibold text-lg rounded-full">Clear
@@ -52,7 +53,6 @@ export default {
     };
   },
   created() {
-    // Retrieve todos from local storage when component is created
     const storedTodos = localStorage.getItem('todos');
     if (storedTodos) {
       this.todos = JSON.parse(storedTodos);
